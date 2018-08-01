@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | Games Menu</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+
+function betAmount(){
+  var begAmount = 0;
+  document.getElementById('betAmount').innerHTML = "Test";
+} 
+
+  var compTotalScore = 0;
+  var playerTotalScore = 0;
+  var compPoints = 0; //do not reset
+  var playerPoints = 0; //do not reset
+  var pMoney = 0; //amount.value parsed to an Integer
+  var compRaise = 0;// raising current money to higher cash
+  var amount; //raw amount value
+  var compMoney = 0;//computer cash
+
+ function rollDice(){
+
+ 	while(compTotalScore == 0 && playerTotalScore == 0){
+    //This is the player random number generator
+    var playerDice1 = Math.floor(Math.random() * 6 + 1);
+    var playerDice2 = Math.floor(Math.random() * 6 + 1);
+
+    //This is the computer random number generator
+    var compDice1 = Math.floor(Math.random() * 6 + 1);
+    var compDice2 = Math.floor(Math.random() * 6 + 1);
+
+     document.getElementById("comp1").innerHTML = compDice1;
+     document.getElementById("comp2").innerHTML = compDice2;
+     document.getElementById("dice1").innerHTML = playerDice1;
+     document.getElementById("dice2").innerHTML = playerDice2;
+
+     compTotalScore = (compDice1 + compDice2);
+     playerTotalScore = (playerDice1 + playerDice2);
+
+    if(compTotalScore > playerTotalScore){
+      compPoints += compTotalScore;
+      compMoney += pMoney;
+      pMoney = 0;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+      document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+      document.getElementById("cScore").innerHTML = compPoints;
+      
+    }
+    if(compDice1 == compDice2 && compTotalScore > playerTotalScore){
+        compPoints += compTotalScore; 
+        compMoney += pMoney;
+        pMoney = 0;
+        document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+        document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+        document.getElementById("cScore").innerHTML = compPoints;
+      }
+
+    if(playerTotalScore > compTotalScore){
+      playerPoints += playerTotalScore;
+      pMoney += compMoney;
+      compMoney =0;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+      document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+      document.getElementById("pScore").innerHTML = playerPoints;
+     
+    }
+    if(playerDice1 == playerDice2 && playerTotalScore > compTotalScore){
+        playerPoints += playerTotalScore; 
+        pMoney += compMoney;
+        compMoney = 0;
+        document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+        document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+        document.getElementById("pScore").innerHTML = playerPoints;
+      }
+
+    if(playerTotalScore == compTotalScore){
+      document.getElementById("rollDice").innerHTML = "Draw! Try again";
+    }
+    }// while loop
+ }//eo-function
+
+
+function reset(){
+  compRaise = 0;
+	compTotalScore = 0;
+	playerTotalScore = 0;
+  amount = 0;
+      
+  document.getElementById('betAmount').innerHTML = "$ " + amount;
+  document.getElementById('pcbet').innerHTML = "$ " + compRaise;
+  document.getElementById('comp1').innerHTML = compTotalScore;
+  document.getElementById('comp2').innerHTML = compTotalScore;
+  document.getElementById('dice1').innerHTML = playerTotalScore;
+  document.getElementById('dice2').innerHTML = playerTotalScore;
+  document.getElementById("rollDice").innerHTML = "Roll The Dice";
+	}//end of reset function
+
+  
+//bet Information
+
+    function placeBet(){
+      amount = document.getElementById('bet');
+      document.getElementById('betAmount').innerHTML = "$ " + amount.value;
+      pMoney = parseInt(amount.value);
+      var compChoice = Math.floor(Math.random() * 3 + 1);
+    switch(compChoice){
+      case 3:
+      document.getElementById('compStats').innerHTML = "Computer Matched You";
+      for(var i = 1; i < pMoney; i++){
+      }
+      compMoney = i;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+      break;
+      case 2:
+      document.getElementById('compStats').innerHTML = "Computer Fold";
+      document.getElementById('pcbet').innerHTML = "$ " + 0;
+      break;
+      case 1:
+      var multiChoice = Math.floor(Math.random() * 20 + 1);
+      document.getElementById('pcbet').innerHTML = amount.value;
+      document.getElementById('compStats').innerHTML = "Computer Raises";
+      compRaise = pMoney + multiChoice;
+      compMoney += compRaise;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+
+      break;
+      default:
+    }
+    
+  }// eo-placeBet
+
+  function fold(){ 
+  compMoney += pMoney;
+  document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+
+  pMoney = 0;
+  document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+  }
+
+  function match(){
+      for(var i = 1; i < compMoney; i++){
+      }
+      pMoney = i;
+      document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+
+    
+  }//Match
+
+  function raise(){ 
+    var playerRaise = Math.floor(Math.random() * 20 + 1);
+    pMoney += playerRaise;
+    document.getElementById('betAmount').innerHTML = "$ " + pMoney;
+
+    var compDecision = Math.floor(Math.random() * 3 + 1);
+    switch(compDecision){
+      case 3:
+      document.getElementById('compStats').innerHTML = "Computer Matched You";
+      for(var i = 1; i < pMoney; i++){
+      }
+      compMoney = i;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+      break;
+      case 2:
+      document.getElementById('compStats').innerHTML = "Computer Fold";
+      document.getElementById('pcbet').innerHTML = "$ " + 0;
+      break;
+      case 1:
+      var multiC = Math.floor(Math.random() * 20 + 1);
+      document.getElementById('pcbet').innerHTML = amount.value;
+      document.getElementById('compStats').innerHTML = "Computer Raises";
+      compRaise = pMoney + multiC;
+      compMoney += compRaise;
+      document.getElementById('pcbet').innerHTML = "$ " + compMoney;
+
+      break;
+      default:
+    }
+  }
+
+  function quit(){
+
+    if(playerPoints > compPoints){
+      alert('Player Won!!!');
+      window.open('index.html','_parent');
+    }
+    if(compPoints > playerPoints){
+      alert('computer Won!!!');
+      window.open('index.html','_parent');
+    }
+    if(compPoints == playerPoints){
+      alert('Draw!!!');
+      window.open('index.html','_parent');
+    }
+  }
+
+</script>
+
+</head>
+<body>
+<fieldset>
+<fieldset>
+  <label><h1 id="rollDice">Roll The Dice</h1></label>
+<table>
+<tr class='playerDice'>
+
+<td class="fix">Player <br /><p id="dice1" style="text-align: center">0</p></td>
+<td class="fix">Player <br /><p id="dice2" style="text-align: center">0</p></td>
+</tr>
+
+<tr class='compDice'>
+
+<td class="fix"> Comp <br /> <p id="comp1" style="text-align: center">0</p></td>
+<td class="fix"> Comp <br /> <p id="comp2" style="text-align: center">0</p></td>
+</tr>
+</table>
+</fieldset>
+
+<table>
+<tr class="score">
+<td class="fix">Score <p id="pScore" style="text-align: center">0</p></td>
+</tr>
+<tr class="score1">
+<td class="fix"> Score <p id="cScore" style="text-align: center">0</p></td>
+</tr>
+</table>
+<h1>Who's going to win?</h1>
+<p>The first person to reach 100 points will be the overall winner!</p>
+</fieldset>
+
+<fieldset><label>Place Your Bet</label>
+  <div class="wrapper"></div>
+<input type="textarea" id="bet" value="" tabindex="1">
+<h1 id="betAmount">$ 0</h1>
+</div>
+<div class="wrapper"></div>
+<label id="compStats">Computer</label>
+<div class="wrapper">
+<h1 id="pcbet">$ 0</h1>
+</div>
+</div>
+
+<button type="button" id="wager" onclick="placeBet();">Bet</button>
+<button type="button" id="wager" onclick="fold();">Fold</button>
+<button type="button" id="wager" onclick="match();">Match</button>
+<button type="button" id="wager" onclick="raise();">Raise</button>
+
+</fieldset>
+
+
+<button type="button" class="btn"  onclick = "rollDice();" ><p id="bet"> Test Your Luck!</p></button>
+<button type="button" class="btn"  onclick = "reset();" ><p id="bet"> Reset</p></button>
+<button type="button" class="btn"  onclick = "quit();" ><p id="bet"> Quit</p></button>
+
+
+</body>
+</html>

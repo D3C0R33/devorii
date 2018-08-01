@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | About You</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script src="main.js" type="text/javascript"/></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+	function myStory() { 
+
+		var age = prompt("how old are you?","16");
+		var name = prompt("What is your name?", "Jacob");
+		var verb = prompt("Choose a confrontational action", "ran, jogged etc...");
+		var gender = prompt("are you a boy or girl?");
+		pronoun = (gender == "boy")?"his":"her";
+		var adjective = prompt("be creative and describe the sound of thunder", "violent");
+		var feeling = prompt("Descibe a feeling in passed tense", "angered");
+
+	document.getElementById('content').innerHTML = ("The sky cracked open with " + adjective + " sounds of thunder, the gods themselves piercing the heavens with each swing of their swords. " + name + ", a demi-god born of a human peasant. Just reached " + pronoun + " " + age + "th birthday. The other gods saw this and was " + feeling + ", so they " + verb + " to Zeus about the matter.<br><br> This led to a fierce battle within the heavens. Battles like this were fought before, for this wasn't the first time Zeus came under temptation of human flesh risking the lives of the gods. Millenniums ago they fought a battle so distructive all things in the universe turned to ashes.<br><br> Will this be the outcome? stay tune for more!");
+
+
+}
+
+
+		
+</script>
+</head>
+<body>
+
+	<div id="container">
+	<h1><em> Story Time </em></h1>
+	<h3> In this game; you are going to create a story based on Zeus' confrontation from the other gods.</h3>
+</div>
+
+<div id="content">
+	<p></p>
+	<input type="button" value="Load Story" onclick="myStory();" />
+</div>
+
+</body>
+</html>

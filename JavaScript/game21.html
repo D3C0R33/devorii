@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Greg's Gambits | Game of 21</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+
+//GLOBAL INFORMATION
+var dealerHand = 0;
+var playerHand = 0;
+var playerTotal = 0;
+var dealerTotal = 0;
+var playerName;
+var playerScore = 0;
+var dealerScore = 0;
+
+//END OF GLOBAL STATEMENT
+
+//function for User Name
+function playerName()
+	{	
+		playerName = prompt("What is your name?","");
+		document.getElementById('player').innerHTML = playerName;	
+	}
+
+function deal() 
+	{
+
+while((dealerHand == 0) && (playerHand == 0)){
+		var dCards1 = Math.floor(Math.random() * 11 + 1);
+		var dCards2 = Math.floor(Math.random() * 11 + 1);
+	//Dealer Random Card Selection End Here
+	//Player Random Card Selection
+		var pCards3 = Math.floor(Math.random() * 11 + 1);
+		var pCards4 = Math.floor(Math.random() * 11 + 1);
+	//Player Random Card Selection End Here
+		dealerHand += (dCards1 + dCards2);
+		playerHand += (pCards4 + pCards3);
+		playerTotal = playerHand;
+		dealerTotal = dealerHand;
+
+if(dealerHand == 21)
+	{
+		document.getElementById('dealerComm').innerHTML = "Dealer won!!!";
+		dealerScore += dealerTotal;
+		document.getElementById('dScore').innerHTML = dealerScore; //inputSCORE
+	}
+if(playerHand == 21)
+	{
+		document.getElementById('dealerComm').innerHTML = "Player won!!!";
+		playerScore += playerTotal;
+		document.getElementById('pScore').innerHTML = playerScore; //inputSCORE
+	}
+if((playerHand == 21) && (dealerHand == 21)){ 
+document.getElementById('dealerComm').innerHTML = "WOW! It's a Draw!!!";
+
+//CHECKING SCORE
+if(dealerScore >= 200){ 
+	alert("Congratulations!!! Dealer Won! :)");
+}
+if(playerScore >= 200){
+	alert("Congratulations!!! " + playerName + " Won the game :)");
+}
+
+}
+break;
+	}// END_OF_WHILE_LOOP
+		document.getElementById('dealerScore').innerHTML = dealerHand;
+		document.getElementById('playerScore').innerHTML = playerHand;
+	}
+
+	
+function hit()
+	{
+while((dealerTotal < 21) && (playerTotal < 21))
+
+	{
+		var dCards2 = Math.floor(Math.random() * 11 + 1);
+		var pCards3 = Math.floor(Math.random() * 11 + 1);
+
+		 dealerTotal += dCards2;
+		 playerTotal += pCards3;
+		 document.getElementById('dealerScore').innerHTML = dealerTotal;
+		 document.getElementById('playerScore').innerHTML = playerTotal;
+
+
+		 // HIT_TESTING_CONDITIONS
+if(dealerTotal == 21)
+	{
+		document.getElementById('dealerComm').innerHTML = "Dealer won!!!";
+		dealerScore += dealerTotal;
+		document.getElementById('dScore').innerHTML = dealerScore; //inputSCORE
+		break;
+	}
+if(playerTotal == 21)
+	{
+		document.getElementById('dealerComm').innerHTML = "Player won!!!";
+		playerScore += playerTotal;
+		document.getElementById('pScore').innerHTML = playerScore; //inputSCORE
+		break;
+	}
+if((dealerTotal > 21) && (playerTotal < 21)){ // PLAYER_WON!
+		document.getElementById('dealerComm').innerHTML = "Player won!!!";
+		playerScore += playerTotal;
+		document.getElementById('pScore').innerHTML = playerScore;	
+		break;
+	}
+if((playerTotal > 21) && (dealerTotal < 21)){ // DEALER_WON!
+		document.getElementById('dealerComm').innerHTML = "Dealer won!!!";
+		dealerScore += dealerTotal;
+		document.getElementById('dScore').innerHTML = dealerScore;
+		break;
+	}
+if((dealerTotal == 21) && (playerTotal == 21)){
+		document.getElementById('dealerComm').innerHTML = "WOW! It's a Draw!!!";
+		break;
+	}
+if((dealerTotal > 21) && (playerTotal > 21)){
+		document.getElementById('dealerComm').innerHTML = "Please reset and try again :)";
+		break;
+	}
+	}
+if(dealerScore >= 200){ 
+		alert("Congratulations!!! Dealer Won! :)");
+	}
+if(playerScore >= 200){
+		alert("Congratulations!!! " + playerName + " Won the game :)");
+	}
+	}// END_OF_HIT_FUNCTION  
+
+function stand(){ 
+if(dealerTotal > playerTotal){
+		document.getElementById('dealerComm').innerHTML = "Dealer won!!!";	
+		dealerScore += dealerTotal;
+		document.getElementById('dScore').innerHTML = dealerScore; //inputSCORE
+	}
+
+if(playerTotal > dealerTotal){
+		document.getElementById('dealerComm').innerHTML = "Player won!!!";	
+		playerScore += playerTotal;
+		document.getElementById('pScore').innerHTML = playerScore; //inputSCORE
+	}
+if(playerTotal == dealerTotal){ 
+		document.getElementById('dealerComm').innerHTML = "It's a draw, Please Try again press the 'reset' button";
+	}
+
+if(dealerScore >= 200){ 
+		alert("Congratulations!!! Dealer Won! :)");
+	}
+if(playerScore >= 200){
+		alert("Congratulations!!! " + playerName + " Won the game :)");
+	}
+	}
+	
+function reset()
+	{ 
+			dealerHand = 0;
+			playerHand = 0;
+			dealerTotal = 0;
+			playerTotal = 0;
+			document.getElementById('dealerComm').innerHTML = " Welcome to Game - 21";
+
+			var resetDH = dealerHand;
+			var resetPH = playerHand;
+			var resetPT = playerTotal;
+			var resetDT = dealerTotal;
+
+			document.getElementById('dealerScore').innerHTML = dealerHand;
+	    	document.getElementById('playerScore').innerHTML = playerHand;
+if(dealerScore >= 200){ 
+			alert("Congratulations!!! Dealer Won! :)");
+	}
+if(playerScore >= 200){
+			alert("Congratulations!!! " + playerName + " Won the game :)");
+	}
+	}
+
+
+
+</script>
+</head>
+<body onload="playerName(); runScpt();">
+<div id="container">
+
+ <img src="images/superhero.jpg" width="120" height="120" class="floatleft" />
+ <h1 id="logo"><em>Game of 21</em></h1>
+  
+<h2 align="center">Deal or Squeel - Winner takes all!</h2>
+
+<p>&nbsp;</p>
+<div id="nav">
+  <p><a href="index.html">Home</a>
+  <a href="greg.html">About Greg</a>
+  <a href="play_games.html">Play a Game</a>
+  <a href="sign.html">Sign In</a>
+  <a href="contact.html">Contact Us</a></p>
+</div>
+<div id="content">
+		<p id="dealerComm" style = "margin: 0px; text-align: center; font-size: 20PX;"> Welcome to Game - 21</p>
+		 <p class="floatright">Game On!<br /><br />
+<!-- Game input information -->
+	 <table> 
+	 	<tr>
+	 	<td><h3>Dealer</h3></td>
+	 	<td><h3 id="player">Player</h3></td>
+	    </tr>
+	    <tr>
+	 	<td><h4 id="dealerScore"> </h4></td>
+	 	<td><h4 id="playerScore"> </h4></td>
+	    </tr>
+	    <tr> 
+	    	<!--Score goes here--> 
+	    <td><h4 id="dScore"> </h4>Score: </td>
+	 	<td><h4 id="pScore"> </h4>Score: </td>
+	    </tr>
+	 </table>
+
+<!-- End-of-Game-Input-info-->
+
+
+	 <img src ="images/madame.jpg" /></p>
+	 <p>&nbsp;</p>
+	 <!--<p><input type="button" value = "Player Name" onclick="collectData();" /></p>-->
+	 
+	 <p><input type="button" value = "Deal!" onclick="deal();" /></p>
+	 <p><input type="button" value = "Hit!" onclick="hit();" /></p>
+	 <p><input type="button" value = "Stand!" onclick="stand();" /></p>
+	 <p><input type="button" value = "Reset!" onclick="reset();" /></p>
+	 <p>&nbsp;</p>
+
+</div>
+<div id="footer">Copyright &copy; 2013 Greg's Gambits<br />
+<a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a></div>
+</div>
+</body>
+</html>

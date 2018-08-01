@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Greg's Gambits | Madame Vadoma Can Tell Your Fortune</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function startFortune()
+{
+ 	var num = 0;
+	var question = " ";
+	var fortune1 = "You're going to... ah, I forgot please try again ";
+	var fortune2 = "You are on a magical journey of reading something spectacular";
+	var fortune3 = "Tonight at exactly 8pm, your clock's minute hand will stop for 60secs";
+	var fortune4 = "You are thinking of a pink cat, no? but now you are though.";
+	var fortune5 = "In a few weeks you will experience the best moment of your life, 'NEW YEARS' ";
+	var fortune6 = "You're going to buy a coffee from Tim Hortons in this week.";
+	var fortune7 = "Richest will be upon you, it's call taxes. season's soon here!  ";
+	var fortune8 = "The job of your dream is around the corner, no literally it is. ";
+	var fortune9 = "You are going to order pizza this week, if you don't I will. That's my fortune.";
+	var fortune10 = "Donald Trump is going to shake your hand, maybe.";
+	
+	num = (Math.floor(Math.random() * 10)) + 1;
+	//question = prompt("What is your question? ", " ");
+	switch(num)
+	{
+	 case 1:
+	 	  document.getElementById("content").innerHTML = fortune1;
+		  break;
+	case 2:
+	 	  document.getElementById("content").innerHTML = fortune2;
+		  break;
+	case 3:
+	 	  document.getElementById("content").innerHTML = fortune3;
+		  break;
+	case 4:
+		  document.getElementById("content").innerHTML = fortune4;
+	 	  break;
+	case 5:
+	 	  document.getElementById("content").innerHTML = fortune5;
+		  break;
+	case 6:
+	 	  document.getElementById("content").innerHTML = fortune6;
+		  break;
+	case 7:
+		  document.getElementById("content").innerHTML = fortune7;
+	 	  break;
+	case 8:
+		  document.getElementById("content").innerHTML = fortune8;
+	 	  break;
+	case 9:
+		 document.getElementById("content").innerHTML = fortune9;
+	 	 break;
+	case 10:
+		 document.getElementById("content").innerHTML = fortune10;
+	 	 break;
+	}
+}
+</script>
+</head>
+<body>
+<div id="container">
+
+ <img src="images/superhero.jpg" width="120" height="120" class="floatleft" />
+ <h1 id="logo"><em>Madame Vadoma Can Tell Your Fortune</em></h1>
+  
+<h2 align="center">Madame Vadoma only speaks the truth. </h2>
+
+<p>&nbsp;</p>
+<div id="nav">
+  <p><a href="index.html">Home</a>
+  <a href="greg.html">About Greg</a>
+  <a href="play_games.html">Play a Game</a>
+  <a href="sign.html">Sign In</a>
+  <a href="contact.html">Contact Us</a></p>
+</div>
+<div id="content">
+	 <p class="floatright">Madame Vadoma fortune telling<br /><br />
+	 <img src ="images/madame.jpg" /></p>
+	 <p>&nbsp;</p>
+	 <p><input type="button" value = "See your fortune!" onclick="startFortune();" /></p>
+	 <p>&nbsp;</p>
+
+</div>
+<div id="footer">Copyright &copy; 2013 Greg's Gambits<br />
+<a href="mailto:yourfirstname@yourlastname.com">yourfirstname@yourlastname.com</a></div>
+</div>
+</body>
+</html>

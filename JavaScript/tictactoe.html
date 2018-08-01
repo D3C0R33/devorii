@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Greg's Gambits | Games Menu</title>
+<link href="greg.css" rel="stylesheet" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+
+ function checkFilled(){
+	 var box = document.getElementById('tf');
+	 var box1 = document.getElementById('tf1');
+	 var box2 = document.getElementById('tf2');
+	 var box3 = document.getElementById('tf3');
+	 var box4 = document.getElementById('tf4');
+	 var box5 = document.getElementById('tf5');
+	 var box6 = document.getElementById('tf6');
+	 var box7 = document.getElementById('tf7');
+   var box8 = document.getElementById('tf8');
+
+// identifying each Box
+	 if(box.value == "x"){
+		 box.style.backgroundColor = "yellow";
+	 } else if(box.value == "o") {
+		 box.style.backgroundColor = "red";
+	 }
+	  if (box1.value == "x"){
+			box1.style.backgroundColor = "yellow";
+		} else if(box1.value == "o") {
+			box1.style.backgroundColor = "red";
+		}
+		if (box2.value == "x"){
+			box2.style.backgroundColor = "yellow";
+		} else if(box2.value == "o") {
+			box2.style.backgroundColor = "red";
+		}
+		if (box3.value == "x"){
+			box3.style.backgroundColor = "yellow";
+		} else if(box3.value == "o") {
+			box3.style.backgroundColor = "red";
+		}
+		if (box4.value == "x"){
+			box4.style.backgroundColor = "yellow";
+		} else if(box4.value == "o") {
+			box4.style.backgroundColor = "red";
+		}
+		if (box5.value == "x"){
+			box5.style.backgroundColor = "yellow";
+		} else if(box5.value == "o") {
+			box5.style.backgroundColor = "red";
+		}
+		if (box6.value == "x"){
+			box6.style.backgroundColor = "yellow";
+		} else if(box6.value == "o") {
+			box6.style.backgroundColor = "red";
+		}
+		if (box7.value == "x"){
+			box7.style.backgroundColor = "yellow";
+		} else if(box7.value == "o") {
+			box7.style.backgroundColor = "red";
+		}
+		if (box8.value == "x"){
+			box8.style.backgroundColor = "yellow";
+		} else if(box8.value == "o") {
+			box8.style.backgroundColor = "red";
+		}
+    //end of box identification
+
+    //Determine the winner
+
+ }
+
+
+</script>
+<style>
+.container {
+float: left;
+padding-right: 25px;
+padding-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<fieldset><label>Tic Tac Toe<br/></label>
+
+<div class="wrapper">
+<div class="container"> <!--container-->
+	<input type= "text" name= "tf" id="tf" size= "5" value= "" tabindex= "1"  />
+	<input type= "button" onclick="checkFilled(); " value="ok" tabindex="1" /></button><br />
+
+
+	<input type= "text" name= "tf" id="tf1" size= "5" value= "" tabindex= "2"  />
+	<input type= "button" onclick="checkFilled(); " value="ok" tabindex="2" /></button><br />
+
+
+	<input type= "text" name= "tf" id="tf2" size= "5" value= "" tabindex= "3"  />
+	<input type= "button" onclick="checkFilled(); " value="ok" tabindex="3" /></button><br />
+	</div>
+
+	<div class="container"> <!--container-->
+		<input type= "text" name= "tf" id="tf3" size= "5" value= "" tabindex= "4"  />
+		<input type= "button" onclick="checkFilled(); " value="ok" tabindex="4" /></button><br />
+
+
+		<input type= "text" name= "tf" id="tf4" size= "5" value= "" tabindex= "5"  />
+		<input type= "button" onclick="checkFilled(); " value="ok" tabindex="5" /></button><br />
+
+
+		<input type= "text" name= "tf" id="tf5" size= "5" value= "" tabindex= "6"  />
+		<input type= "button" onclick="checkFilled(); " value="ok" tabindex="6" /></button><br />
+		</div>
+
+		<div class="container"> <!--container-->
+			<input type= "text" name= "tf" id="tf6" size= "5" value= "" tabindex= "7"  />
+			<input type= "button" onclick="checkFilled(); " value="ok" tabindex="7" /></button><br />
+
+
+			<input type= "text" name= "tf" id="tf7" size= "5" value= "" tabindex= "8"  />
+			<input type= "button" onclick="checkFilled(); " value="ok" tabindex="8" /></button><br />
+
+
+			<input type= "text" name= "tf" id="tf8" size= "5" value= "" tabindex= "9"  />
+			<input type= "button" onclick="checkFilled(); " value="ok" tabindex="9" /></button><br />
+			</div>
+
+
+</div>
+
+
+
+</fieldset>
+
+
+
+</body>
+</html>
