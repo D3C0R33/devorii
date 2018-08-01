@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Review {
+
+    public static void main(String[] args) {
+         String Rank[] = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+         String Suit[] = {"Clubs", "Diamonds", "Hearts", "Spades"};
+
+
+               int a, b;
+
+               a = (int)(Math.random() * 13);
+               b = (int)(Math.random() * 4);
+
+        System.out.println("The card you pick is " + Rank[a] + " of " + Suit[b]);
+
+        
+                }
+            }
+
+
+ 

@@ -1,0 +1,21 @@
+public class TestingArrays {
+    public static void main(String[] args) {
+
+        int[][] grid = new int [5] [5];
+
+        for (int row = 0; row < grid.length; row++){
+            for (int column = 0; column < grid[row].length; column++){
+                grid[row][column] = (int) (Math.random() * 100);
+            }
+
+        }
+        for (int row = 0; row < grid.length; row++){
+            for (int column = 0; column < grid[row].length; column++){
+                System.out.printf("%-5d", grid[row] [column]);
+            }
+            System.out.println();
+    }
+}
+
+    }
+

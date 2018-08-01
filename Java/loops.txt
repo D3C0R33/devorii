@@ -1,0 +1,58 @@
+import java.util.Scanner;
+public class CurrentTime {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int aNumber = 102;
+        int randomNumber = (int) (Math.random() * 101);
+        boolean firstRun = true;
+        String keepPlaying = "yes";
+        do {
+            while (aNumber != randomNumber) {
+                if (firstRun) {
+                    System.out.println("Please enter a number:");
+                    firstRun = false;
+                } else {
+                    if (aNumber > randomNumber)
+                        System.out.println("Please enter a smaller Number");
+                }
+
+                aNumber = input.nextInt();
+            }// While loop
+            System.out.println("Successfully guessed number!" + randomNumber);
+            System.out.println("Do you want to keep playing?");
+
+            keepPlaying = input.next().toLowerCase();
+            System.out.println("keepPlaying value is: " + keepPlaying);
+            if (keepPlaying.equals("yes")) {
+                System.out.print("Entering keepPlaying == \"yes\"");
+                aNumber = 102;
+                randomNumber = (int) (Math.random() * 101);
+                firstRun = true;
+            }
+        }while (keepPlaying.equals("yes")); // do while Loop
+                System.out.println("Thanks for playing!");
+            }
+
+
+
+
+// This is also another loop as well. 
+
+public class TestClass {
+    public static void main(String[] args) {
+        System.out.println("Printing 5 x 5 multiplication table");
+        int i, j;
+        for (i = 5; i <= 5; i++) {
+            // Below is the nested for loops... The inner loop declare collums out\er is the rows
+
+            for (j = 1; j <= 5; j++) {
+                System.out.printf("%5d", i * j);
+
+                //System.out.print(" ");
+            }// inner for loop
+            System.out.print("\n");
+        }//outer for loop
+
+ 
+            }

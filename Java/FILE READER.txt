@@ -1,0 +1,95 @@
+import java.util.Scanner;
+import java.io.*;
+
+public class FileExample {
+
+    public static void main (String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean keepPlaying = true;
+        while (keepPlaying) {
+            System.out.println("\n Enter 1 for Name search or 2 for Rank search  ");
+        int option = 0;
+        option = input.nextInt();
+        if (option == 1) {
+            System.out.println("Please enter the year and name and gender ");
+            String fileName = "C:\\Users\\rajesh.persaud\\IdeaProjects\\FileTesting\\names\\yob";
+            String year = input.next();
+            fileName += year;
+            fileName += ".txt";
+            //System.out.println(fileName);
+            String name = input.next() + "," + input.next();
+            //System.out.printf("Name you're looking for is %s in year: %s", name, year );
+            int rank = 0;
+            boolean keepGoing = true;
+            String currentName = "";
+            int position = 0;
+            boolean carryOnNestedWhile = true;
+            try {
+                //System.out.println("entering try block ");
+                Scanner fileReader = new Scanner(new File(fileName));
+                while (keepGoing) {
+                    rank++;
+                    try {
+                        currentName = fileReader.next();
+                    } catch (java.util.NoSuchElementException e) {
+                        System.out.println("Sorry your name is not found in the database! :( ");
+                        break;
+                    }
+
+                    if (currentName.contains(",M,") && carryOnNestedWhile) {
+                        carryOnNestedWhile = false;
+                        position = rank;
+                    }
+
+                    if (currentName.contains(name)) {
+                        System.out.printf("current name : %s  rank : %d", currentName, rank - position + 1);
+                        keepGoing = false;
+                    }
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found " + e);
+            }
+        } // option #1
+        else if (option == 2) {
+            System.out.println("Please enter the year rank and gender ");
+            String fileName = "C:\\Users\\rajesh.persaud\\IdeaProjects\\FileTesting\\names\\yob";
+            String year = input.next();
+            fileName += year;
+            int rank = input.nextInt();
+            String gender = input.next();
+            gender = gender.toUpperCase();
+            System.out.println("Rank # " + rank + ", gender :" + gender);
+            fileName += ".txt";
+            try {
+                Scanner fileReader = new Scanner(new File(fileName));
+                if (gender.equals("F")) {
+                    for (int i = 1; i < rank; i++) {
+                        fileReader.nextLine();
+                    }
+                    System.out.println("Female rank #" + rank + ", name is " + fileReader.nextLine());
+                } else if (gender.equals("M")) {
+                    boolean keepGoing = true;
+                    int position = 0;
+                    String firstMale;
+                    while (keepGoing) {
+                        position++;
+                        firstMale = fileReader.nextLine();
+                        if (firstMale.contains(",M,")) {
+                            System.out.println(position + " " + firstMale);
+                            keepGoing = false;
+                        }
+
+                    }
+                    int row = rank + position - 2;
+                    for (int i = position; i < row; i++) {
+                        fileReader.nextLine();
+                    }
+                    System.out.println("Male rank #" + rank + ", name is " + fileReader.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println(e + " - " + fileName);
+            }//catch for option#2's try block
+        } // option #2
+    } // while keepPlaying
+    } // static void main
+}

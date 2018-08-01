@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class ComputeCircleArea {
+
+    public static void main (String[] args) {
+        double area;
+        double radius;
+        double radiusExponent;
+
+
+        Scanner input = new Scanner(System.in);
+        radius = input.nextDouble();
+
+        radiusExponent = Math.pow(radius, 3);
+
+        area = radius * radius * 3.141;
+
+        System.out.println("Area for radius " + radius + " is " + area + " ");
+        System.out.println("Radius raised to the power  of 3 is " +radiusExponent );
+
+
+// This is a project I am building in Java Don’t Forget 
+
+import java.util.Scanner;
+
+public class Review{
+    public static void main(String[] args) {
+        String name = "";
+        int age = 0;
+        //Answers to my question.
+        String Notes = "";
+        String n = "";
+        System.out.print("Hi, what's your name?: ");
+        Scanner input = new Scanner(System.in);
+        name = input.nextLine();
+
+        System.out.println(" Welcome " + name + ", How can I help you today?");
+
+        // This is my introduction code line of code.
+
+
+       // This is where the customer will place their notes.
+        Notes = input.nextLine();

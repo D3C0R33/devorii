@@ -1,0 +1,42 @@
+ import java.util.Scanner;
+
+ public class CurrentTime {
+     public static void main(String[] args) {
+         int age = 0;
+         double weight = 0;
+         double height = 0;
+
+         System.out.print("PLEASe ENTER YOUR AGE:");
+         Scanner input = new Scanner(System.in);
+         age = input.nextInt();
+
+         if (age >= 16) {
+             System.out.println("Congrats you are eligible for our BMI test!");
+             System.out.println("Please enter your weight");
+                weight = input.nextDouble();
+                System.out.print("Please enter your height:");
+                height = input.nextDouble();
+                System.out.print("Your height is " + height + "and your weight is " + weight);
+                final float BMI = (float) (weight / ( height * height));
+                System.out.println("Your BMI score is: " + BMI);
+
+                if (BMI >=  30 )
+             System.out.println ("obese");
+
+            else if (BMI >=  25 )
+             System.out.println ("overWeight");
+
+            else if (BMI >=  18.5 )
+             System.out.println ("overWeight");
+
+            else
+                System.out.println("Underweight");
+
+
+         } else {
+             System.out.println("Congrats you are NOT eligible for our BMI test!");
+         }
+     }
+
+ }
+

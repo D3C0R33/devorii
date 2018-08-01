@@ -1,0 +1,266 @@
+package sample;
+import javafx.animation.KeyFrame;
+        import javafx.animation.Timeline;
+        import javafx.application.Application;
+        import javafx.geometry.Pos;
+        import javafx.geometry.Insets;
+        import javafx.scene.Scene;
+        import javafx.scene.Node;
+        import javafx.scene.control.Button;
+        import javafx.scene.control.Label;
+        import javafx.scene.layout.BorderPane;
+        import javafx.scene.layout.HBox;
+        import javafx.scene.layout.VBox;
+        import javafx.scene.layout.Pane;
+        import javafx.scene.layout.FlowPane;
+        import javafx.scene.layout.GridPane;
+        import javafx.scene.paint.Color;
+        import javafx.scene.shape.Arc;
+        import javafx.scene.shape.ArcType;
+        import javafx.scene.shape.Circle;
+        import javafx.stage.Stage;
+        import javafx.util.Duration;
+        import javafx.scene.control.Slider;
+        import javafx.scene.layout.StackPane;
+        import javafx.scene.text.*;
+
+public class Main extends Application {
+
+    @Override // Override the start method in the Application class
+    public void start(Stage primaryStage) {
+        FanPane fan = new FanPane();
+        FlowPane spane = new FlowPane(5, 5);
+        spane.getChildren().addAll(fan);
+        HBox hBox = new HBox(5);
+        GridPane botPane = new GridPane();
+        Label numFans = new Label("Num Fans:      ");
+        Label blades = new Label("       Blades:    ");
+        Label total = new Label("Control All Fans:         ");
+        Button btPause = new Button("Pause");
+        Button btResume = new Button("Resume");
+        Button btReverse = new Button("Reverse");
+        hBox.setAlignment(Pos.CENTER);
+        hBox.getChildren().addAll(btPause, btResume, btReverse);
+        Slider slider = new Slider(0, 5, 0);
+        Slider bSlider = new Slider(0, 10,0);
+        slider.setShowTickLabels(true);
+        slider.setShowTickMarks(true);
+        bSlider.setShowTickLabels(true);
+        bSlider.setShowTickMarks(true);
+
+        botPane.getChildren().addAll(numFans, slider, blades, bSlider, total);
+        botPane.setConstraints(total, 0, 0);
+        botPane.setConstraints(numFans, 3, 0);
+        botPane.setConstraints(slider, 4, 0);
+        botPane.setConstraints(blades, 6, 0);
+        botPane.setConstraints(bSlider, 7, 0);
+
+
+        BorderPane pane = new BorderPane();
+        pane.setPadding(new Insets(10, 30, 12, 12));
+        pane.setCenter(spane);
+        pane.setTop(hBox);
+        pane.setBottom(botPane);
+
+        // Create a scene and place it in the stage
+        Scene scene = new Scene(pane, 1200, 400);
+        primaryStage.setTitle("FanWithControls"); // Set the stage title
+        primaryStage.setScene(scene); // Place the scene in the stage
+        primaryStage.show(); // Display the stage
+
+        fan.setAnimation(fan);
+        Timeline animation = fan.getAnimation();
+
+        //scene.widthProperty().addListener(e -> fan.setW(fan.getWidth()));
+        //scene.heightProperty().addListener(e -> fan.setH(fan.getHeight()));
+        spane.setHgap(5);
+
+        btPause.setOnAction((e) -> {
+            for (Node fans : spane.getChildren()) {
+                FanPane fanpane = (FanPane) fans;
+                fanpane.getAnimation().pause();
+            }
+//            animation.pause();
+        });
+        btResume.setOnAction((e) -> {
+            for (Node fans : spane.getChildren()) {
+                FanPane fanpane = (FanPane) fans;
+                fanpane.getAnimation().play();
+            }
+//            animation.play();
+        });
+        btReverse.setOnAction((e) -> {
+            for (Node fans : spane.getChildren()) {
+                FanPane fanpane = (FanPane) fans;
+                fanpane.reverse();
+            }
+//            fan.reverse();
+        });
+
+        slider.valueProperty().addListener((ov) -> {
+//            animation.setRate(slider.getValue());
+
+            if (spane.getChildren().size() < (int) slider.getValue()) {
+                for (int i = spane.getChildren().size(); i < (int) slider.getValue(); i++) {
+                    FanPane fanPane = new FanPane();
+                    spane.getChildren().add(fanPane);
+                    fanPane.setAnimation(fanPane);
+                    fanPane.rate();
+                }
+            } else if (spane.getChildren().size() > (int) slider.getValue()) {
+                for (int i = (int) slider.getValue(); i < spane.getChildren().size(); i++) {
+                    spane.getChildren().remove(spane.getChildren().size() - 1);
+                }
+            }
+        });
+
+    }
+
+
+    /**
+     * The main method is only needed for the IDE with limited JavaFX support.
+     * Not needed for running from the command line.
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    class FanPane extends Pane {
+
+        private double w = 200;
+        private double h = 200;
+        private double radius = Math.min(w, h) * 0.45;
+        private Arc arc[] = new Arc[4];
+        private double startAngle = 30;
+        private Circle circle = new Circle(w / 2, h / 2, radius);
+        private Timeline animation;
+        private Slider slider1 = new Slider(0, 15, 0);
+        private Slider slider2 = new Slider(0, 10, 0);
+        private BorderPane bpane = new BorderPane();
+        private Button pauseBt = new Button("Pause");
+        private Button resumeBt = new Button("Resume");
+        private Button reverseBt = new Button("Reverse");
+        private HBox btBox = new HBox(5);
+        private Label blank = new Label("       ");
+        private Label speed = new Label("Fan Speed: ");
+        private Label numBlades = new Label("Num Blades: ");
+        private VBox topBox = new VBox();
+        private VBox midBox = new VBox();
+        private GridPane gpane = new GridPane();
+
+        public FanPane() {
+            circle.setStroke(Color.BLUE);
+            circle.setFill(Color.WHITE);
+            circle.setStrokeWidth(4);
+            getChildren().add(bpane);
+
+            slider1.setShowTickLabels(true);
+            slider1.setShowTickMarks(true);
+            slider1.setMajorTickUnit(5);
+            slider1.setMinorTickCount(0);
+            slider1.setBlockIncrement(1);
+            slider2.setShowTickLabels(true);
+            slider2.setShowTickMarks(true);
+            slider2.setMajorTickUnit(5);
+            slider2.setMinorTickCount(0);
+            slider2.setBlockIncrement(1);
+
+            gpane.setConstraints(speed, 0, 0);
+            gpane.setConstraints(slider1, 1, 0);
+            gpane.setConstraints(numBlades, 0, 1);
+            gpane.setConstraints(slider2, 1, 1);
+            gpane.getChildren().addAll(speed, slider1, numBlades, slider2);
+
+            btBox.getChildren().addAll(pauseBt,resumeBt,reverseBt);
+            topBox.getChildren().addAll(blank, btBox);
+
+
+            bpane.setCenter(circle);
+            bpane.setTop(topBox);
+            bpane.setBottom(gpane);
+            bpane.setAlignment(topBox, Pos.CENTER);
+
+            pauseBt.setOnAction(e -> animation.pause());
+            resumeBt.setOnAction(e -> animation.play());
+            reverseBt.setOnAction(e -> this.reverse());
+
+            bpane.widthProperty().addListener(e -> this.setW(this.getWidth()));
+            bpane.heightProperty().addListener(e -> this.setH(this.getHeight()));
+
+            for (int i = 0; i < 4; i++) {
+                arc[i] = new Arc(w / 2, h / 2, radius * 0.9, radius * 0.9, startAngle + i * 90, 35);
+                arc[i].setFill(Color.RED); // Set fill color
+                arc[i].setType(ArcType.ROUND);
+                getChildren().addAll(arc[i]);
+            }
+
+        }
+
+        public Timeline getAnimation() {
+            return animation;
+        }
+
+        public void setAnimation(FanPane fan) {
+            this.animation = new Timeline(new KeyFrame(Duration.millis(50), e -> fan.move()));
+            animation.setCycleCount(Timeline.INDEFINITE);
+            animation.play();
+        }
+
+        private double increment = 5;
+
+        public void reverse() {
+            increment = -increment;
+        }
+
+        public void rate() {
+            slider1.valueProperty().addListener(ov -> animation.setRate(slider1.getValue()));
+        }
+
+        public void move() {
+            setStartAngle(startAngle + increment);
+        }
+
+        public void setStartAngle(double angle) {
+            startAngle = angle;
+            setValues();
+        }
+
+        public void setValues() {
+            radius = Math.min(w, h) * 0.45;
+            circle.setRadius(radius);
+            circle.setCenterX(w / 2);
+            circle.setCenterY(h / 2);
+
+            for (int i = 0; i < 4; i++) {
+                arc[i].setRadiusX(radius * 0.9);
+                arc[i].setRadiusY(radius * 0.9);
+                arc[i].setCenterX(w / 2);
+                arc[i].setCenterY(h / 2);
+                arc[i].setStartAngle(startAngle + i * 90);
+            }
+        }
+
+        public void setW(double w) {
+            this.w = w;
+            setValues();
+        }
+
+        public void setH(double h) {
+            this.h = h;
+            setValues();
+        }
+
+        public double getCenterX() {
+            return circle.getCenterX();
+        }
+
+        public double getCenterY() {
+            return circle.getCenterY();
+        }
+
+        public double getRadius() {
+            return circle.getRadius();
+        }
+
+    }
+}

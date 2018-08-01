@@ -1,0 +1,154 @@
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;                                                        
+                                                                                                                        
+import java.security.cert.Extension;                                                                                    
+import java.util.*;                                                                                                     
+import java.util.stream.IntStream;                                                                                      
+                                                                                                                        
+public class MyCCAssignment {                                                                                           
+    public static void main(String[] args) {                                                                            
+        CreditCard();                                                                                                   
+    } //Main                                                                                                            
+                                                                                                                        
+    static void CreditCard(){                                                                                           
+        Scanner input = new Scanner(System.in);                                                                         
+                                                                                                                        
+// Class variables                                                                                                      
+        long creditCard;                                                                                                
+        boolean inputValid = true;                                                                                      
+        String Limit = "1234567890123456";                                                                              
+        String minLimit = "12345678901234";                                                                             
+                                                                                                                        
+                                                                                                                        
+// User Notification                                                                                                    
+        System.out.println("Credit card numbers are limited to " + 16 + " Digits");                                     
+  /*                                                                                                                    
+  The below block of code prevents all errors entered from the user, they can no longer enter                           
+  a String, Num more than 16 Digits nor minimum of 13.                                                                  
+  */                                                                                                                    
+        do {                                                                                                            
+            try {                                                                                                       
+                System.out.print("Enter Credit Card Number: ");                                                         
+                creditCard = input.nextLong();                                                                          
+                long ccDup = new Long(creditCard);                                                                      
+                inputValid = true;                                                                                      
+                                                                                                                        
+                if (Long.toString(ccDup).length() == Limit.length()) {                                                  
+                    System.out.println("Validating...");                                                                
+                } else if (Long.toString(ccDup).length() < minLimit.length()) {                                         
+                    System.out.println("You need to enter more then 13 digits");                                        
+                    inputValid = false;                                                                                 
+                } else if (Long.toString(ccDup).length() > Limit.length()) {                                            
+                    System.out.println("You have reached the max amount of characters: ");                              
+                    inputValid = false;                                                                                 
+                }                                                                                                       
+// The code below defines the cards                                                                                     
+                String firstNum = Long.toString(ccDup);                                                                 
+                int Num = Character.digit(firstNum.charAt(0), 10);                                                      
+                if (Num == 4) {                                                                                         
+                    System.out.println("Visa Credit Card");                                                             
+                }                                                                                                       
+                else if  (Num == 5) {                                                                                   
+                    System.out.println("Master Credit Card");                                                           
+                }                                                                                                       
+                else if (Num == 5) {                                                                                    
+                    System.out.println("Discover Credit Card");                                                         
+                }                                                                                                       
+                else if (Num == 3) {                                                                                    
+                    System.out.println("American Express");                                                             
+                }                                                                                                       
+                                                                                                                        
+                long subtract = 0;                                                                                      
+                long numsub;                                                                                            
+                long sum = 0;                                                                                           
+                long Sum = 0;                                                                                           
+                long add;                                                                                               
+                long Add;                                                                                               
+                long multiply;                                                                                          
+                long trim;                                                                                              
+                long compile;                                                                                           
+                long finalSum = 0;                                                                                      
+                long finalAdd;                                                                                          
+                long add2;                                                                                              
+                long sum2 = 0;                                                                                          
+                long multi2;                                                                                            
+                long trim2;                                                                                             
+                long div;                                                                                               
+                long Sum2 = 0;                                                                                          
+                long compile2;                                                                                          
+                long finalSum2 = 0;                                                                                     
+                                                                                                                        
+//subtracting last digit of the Card.                                                                                   
+                numsub = ccDup % 10;                                                                                    
+                subtract = ccDup - numsub;                                                                              
+                ccDup = ccDup / 10;                                                                                     
+                                                                                                                        
+//running loop for every other (digit * 2 / 10) to get the first digit of the multiplication.                           
+                while (ccDup > 0) {                                                                                     
+                    add = ccDup % 10;                                                                                   
+                    sum = sum + add;                                                                                    
+                    ccDup = ccDup / 100;                                                                                
+                    multiply = add * 2;                                                                                 
+                    trim = multiply / 10;  // Capturing Front Digit | TRIM                                              
+                                                                                                                        
+                    long remainder = new Long(add) * 2;                                                                 
+                    Add = remainder % 10;  // Back number | ADD                                                         
+                    Sum = Sum + Add;                                                                                    
+                    remainder = remainder / 10;                                                                         
+                                                                                                                        
+                    compile = (trim + Add); // ADDED TRIM & ADD                                                         
+                                                                                                                        
+                    finalAdd = compile % 10;                                                                            
+                    finalSum = finalSum + finalAdd; // FINAL SUM                                                        
+                    compile = compile / 10;                                                                             
+                                                                                                                        
+// Duplicating credit card entry                                                                                        
+                    while (creditCard > 0) {                                                                            
+                        add2 = creditCard % 10;                                                                         
+                        sum2 = sum2 + add2;                                                                             
+                        creditCard = creditCard / 100;                                                                  
+                    }                                                                                                   
+                }                                                                                                       
+                                                                                                                        
+//Credit Card Validation                                                                                                
+                boolean validation = true;                                                                              
+                                                                                                                        
+                div = (sum2 + finalSum);                                                                                
+                int num = ((int)div % 10);                                                                              
+                div = div / 10;                                                                                         
+                                                                                                                        
+               do {                                                                                                     
+                   if (num % 10 == 0) {                                                                                 
+                       System.out.println("Valid");                                                                     
+                       validation = true;                                                                               
+                   }                                                                                                    
+                   else if (num % 10 != 0){                                                                             
+                       System.out.println("not valid");                                                                 
+                       validation = false;                                                                              
+                   }                                                                                                    
+               }while (!true);                                                                                          
+                                                                                                                        
+// Catching Mismatch Error Preventing Char Entry...                                                                     
+            } catch (InputMismatchException e) {                                                                        
+                System.out.print("Invalid Input try again\n\n ");                                                       
+                input.nextLine();                                                                                       
+                inputValid = false;                                                                                     
+            }//catch                                                                                                    
+                                                                                                                        
+        } while(!inputValid);                                                                                           
+                                                                                                                        
+    }//CreditCard                                                                                                       
+                                                                                                                        
+                                                                                                                        
+}// Class                                                                                                               
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        

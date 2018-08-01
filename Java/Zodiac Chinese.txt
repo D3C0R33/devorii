@@ -1,0 +1,63 @@
+ import java.util.Scanner;
+
+ public class CurrentTime {
+     public static void main(String[] args) {
+         int year = 0;
+
+         System.out.print("Please enter an your YEAR OF BIRTH:");
+         Scanner input = new Scanner(System.in);
+         year = input.nextInt();
+
+         int chineseZodiac = year % 12;
+         switch(chineseZodiac) {
+             case 0:
+                 System.out.println("Your Chinese Zodiac Sign is a Monkey");
+
+                     break;
+             case 1:
+                 System.out.println("Your Chinese Zodiac Sign is a Rooster");
+
+                 break;
+             case 2:
+                 System.out.println("Your Chinese Zodiac Sign is a Dog");
+
+                 break;
+             case 3:
+                 System.out.println("Your Chinese Zodiac Sign is a Pig");
+
+                 break;
+             case 4:
+                 System.out.println("Your Chinese Zodiac Sign is a Rat");
+                 break;
+             case 5:
+                 System.out.println("Your Chinese Zodiac Sign is a Ox");
+                 break;
+             case 6:
+                 System.out.println("Your Chinese Zodiac Sign is a Tiger");
+
+                 break;
+             case 7:
+                 System.out.println("Your Chinese Zodiac Sign is a Rabbit");
+                 break;
+             case 8:
+                 System.out.println("Your Chinese Zodiac Sign is a Dragon");
+                 break;
+             case 9:
+                 System.out.println("Your Chinese Zodiac Sign is a Snake");
+
+                 break;
+             case 10:
+                 System.out.println("Your Chinese Zodiac Sign is a Horse");
+
+                 break;
+             case 11:
+                 System.out.println("Your Chinese Zodiac Sign is a Sheep");
+
+             default :
+                 System.out.println("I'm sorry your imput was not valid, PLEASE TRY AGAIN");
+                 
+         }
+
+
+     }
+ }
