@@ -1,0 +1,36 @@
+[
+    
+            {
+            "productid": 1,
+            "product": "Rice", 
+            "amount": 2, 
+            "price": 10.95 
+            },
+            {
+            "productid": 2,
+            "product": "Tomatoes", 
+            "amount": 4, 
+            "price": 4    
+            },
+            {
+            "productid": 3,
+            "product": "Onions", 
+            "amount": 10, 
+            "price": 15.95
+            },
+            {
+            "productid": 4,
+            "product": "Potatoes", 
+            "amount": 2, 
+            "price": 12.95
+            },
+            {
+            "productid": 5,
+            "product": "Salmon", 
+            "amount": 2, 
+            "price": 30.95
+            
+            }
+
+
+]
