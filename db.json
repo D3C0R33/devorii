@@ -1,5 +1,5 @@
-[
-    
+{
+    "Groceries": [
             {
             "productid": 1,
             "product": "Rice", 
@@ -34,3 +34,4 @@
 
 
 ]
+}
