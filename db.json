@@ -35,6 +35,7 @@
             "price": 15.95,
             "NoFrillsname": "NoFrills"
             },
+            {
             "productid": 7,
             "product": "Onions", 
             "amount": 10, 
