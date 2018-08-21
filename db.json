@@ -14,20 +14,7 @@
             "price": 8.95, 
             "Loblawsname": "Loblaws"
             },
-        {
-            "productid": 3,
-            "product": "Tomatoes", 
-            "amount": 4, 
-            "price": 4,
-         
-            },
-            {
-            "productid": 4,
-            "product": "Tomatoes", 
-            "amount": 3, 
-            "price": 7,  
-           
-            },
+       
 
           
 ]
