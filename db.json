@@ -1,6 +1,4 @@
-{
-
-"groceries": [ 
+{ "groceries":[ 
             {
             "productid": 1,
             "product": "Tomatoes", 
