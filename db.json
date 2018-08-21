@@ -19,14 +19,14 @@
             "product": "Tomatoes", 
             "amount": 4, 
             "price": 4,
-            "NoFrillsname": "NoFrills"
+         
             },
             {
             "productid": 4,
             "product": "Tomatoes", 
             "amount": 3, 
             "price": 7,  
-            "Loblawsname": "Loblaws"
+           
             },
 
           
