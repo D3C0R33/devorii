@@ -6,6 +6,12 @@
             "amount": 2, 
             "price": 10.95 
             },
+          {
+            "productid": 5,
+            "product": "Rice", 
+            "amount": 2, 
+            "price": 8.95 
+            },
             {
             "productid": 2,
             "product": "Tomatoes", 
