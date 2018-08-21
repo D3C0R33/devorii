@@ -7,12 +7,6 @@
             "price": 10.95, 
             "NoFrillsname": "NoFrills"
             },
-            {
-            "productid": 2,
-            "product": "Rice", 
-            "amount": 5, 
-            "price": 8.95, 
-            "Loblawsname": "Loblaws"
-            },
+            
        ]
 }
