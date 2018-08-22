@@ -64,7 +64,7 @@
             "product": "Milk", 
             "amount": 15, 
             "price": 12.95,
-            "Loblawsname": "Loblaws"
+            "NoFrillsname": "NoFrills"
             
             },
          {
@@ -80,7 +80,7 @@
             "product": "Rice", 
             "amount": 15, 
             "price": 12.95,
-            "Loblawsname": "Loblaws"
+            "NoFrillsname": "NoFrills"
             
             },
          {
